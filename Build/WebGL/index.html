@@ -1,0 +1,80 @@
+<!-- Website for PWA -->
+<!-- Last Edited: 26/01/2026 -->
+<!-- Edited By Quinn Carr -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>TSE PWA Website</title>
+
+    <link rel="manifest" href="manifest.json">
+
+    <!-- Tags for iOS download  -->
+    <link rel="apple-touch-icon" href="icons/pwa_icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="TSE PWA">
+</head>
+
+<body>
+    <h1>Team Software Engineering PWA</h1>
+
+    <button id="installPWA">Download The App</button>
+
+    <div id="iosHint" hidden>
+        Tap <strong>Share</strong> → <strong>Add to Home Screen</strong>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js');
+        }
+
+        function isIOS() {
+            return /iphone|ipad|ipod/i.test(navigator.userAgent);
+        }
+
+        function isAndroid() {
+            return /android/i.test(navigator.userAgent);
+        }
+
+        let deferredPrompt;
+        const installBtn = document.getElementById('installPWA');
+        const iosHint = document.getElementById('iosHint');
+
+        // Safety check (prevents crashes)
+        if (!installBtn) {
+            console.error("installBtn not found");
+            return;
+        }
+
+        window.addEventListener('beforeinstallprompt', e => {
+            e.preventDefault();
+            deferredPrompt = e;
+
+            if (isAndroid()) {
+            installBtn.hidden = false;
+            }
+        });
+
+        installBtn.addEventListener('click', async () => {
+            if (!deferredPrompt) return;
+
+            deferredPrompt.prompt();
+            await deferredPrompt.userChoice;
+            deferredPrompt = null;
+            installBtn.hidden = true;
+        });
+
+        if (isIOS() && !window.navigator.standalone) {
+            iosHint.hidden = false;
+        }
+
+        });
+</script>
+
+</body>
+</html>
