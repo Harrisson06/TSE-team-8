@@ -1,12 +1,14 @@
 <!-- Website for PWA -->
-<!-- Last Edited: 26/01/2026 -->
+<!-- Last Edited: 09/03/2026 -->
 <!-- Edited By Quinn Carr -->
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="stylesheet" href="css/styles.css">
     <meta charset="UTF-8">
-    <title>TSE PWA Website</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UOL Computer Science App</title>
 
     <link rel="manifest" href="manifest.json">
 
@@ -18,12 +20,17 @@
 </head>
 
 <body>
-    <h1>Team Software Engineering PWA</h1>
+    <!-- Fonts, Images etc. -->
+     <img src="Images/Lincoln_Logo.png" class="corner-image" alt="Logo">
 
-    <button id="installPWA">Download The App</button>
+    <h1 id="title">UOL Computer Science App</h1>
 
-    <div id="iosHint" hidden>
-        Tap <strong>Share</strong> → <strong>Add to Home Screen</strong>
+    <p1 id="description">Welcome to the department of Computer Science! Download the app below to access interactive elements to learn where Computer Science could take you</p1>
+
+    <button id="installPWA">Download</button>
+
+    <div id="iosHint">
+        <strong>iOS Users: Tap Share → Add to Home Screen</strong>
     </div>
 
     <script>
