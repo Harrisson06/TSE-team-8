@@ -1,7 +1,7 @@
 /* Fonts */
 @font-face {
     font-family: 'Inter';
-    src: url("Images/Inter_24pt-Bold.ttf") format('truetype');
+    src: url("../Images/Inter_24pt-Bold.ttf") format('truetype');
 }
 
 /* Styles for phone screens */
@@ -15,6 +15,10 @@
 /* Styles for desktop screens */
 body {
     background-color: #002147;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
 }
 
 /* Logo in corner of screen */
@@ -44,7 +48,7 @@ body {
 #installPWA{
     font-family: 'Inter', sans-serif;
     position: fixed;
-    bottom: 250px;
+    bottom: 300px;
     left: 50%;
     transform: translateX(-50%);
     color: black;
