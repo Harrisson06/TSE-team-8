@@ -1,0 +1,87 @@
+<!-- Website for PWA -->
+<!-- Last Edited: 09/03/2026 -->
+<!-- Edited By Quinn Carr -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="Build/WebGL/css/styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UOL Computer Science App</title>
+
+    <link rel="manifest" href="Build/WebGL/manifest.json">
+
+    <!-- Tags for iOS download  -->
+    <link rel="apple-touch-icon" href="Build/WebGL/icons/pwa_icon.png">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="TSE PWA">
+</head>
+
+<body>
+    <!-- Fonts, Images etc. -->
+     <img src="Build/WebGL/images/Lincoln_Logo.png" class="corner-image" alt="Logo">
+
+    <h1 id="title">UOL Computer Science App</h1>
+
+    <p1 id="description">Welcome to the department of Computer Science! Download the app below to access interactive elements to learn where Computer Science could take you</p1>
+
+    <button id="installPWA">Download</button>
+
+    <div id="iosHint">
+        <strong>iOS Users: Tap Share → Add to Home Screen</strong>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('service-worker.js');
+        }
+
+        function isIOS() {
+            return /iphone|ipad|ipod/i.test(navigator.userAgent);
+        }
+
+        function isAndroid() {
+            return /android/i.test(navigator.userAgent);
+        }
+
+        let deferredPrompt;
+        const installBtn = document.getElementById('installPWA');
+        const iosHint = document.getElementById('iosHint');
+
+        // Safety check (prevents crashes)
+        if (!installBtn) {
+            console.error("installBtn not found");
+            return;
+        }
+
+        window.addEventListener('beforeinstallprompt', e => {
+            e.preventDefault();
+            deferredPrompt = e;
+
+            if (isAndroid()) {
+            installBtn.hidden = false;
+            }
+        });
+
+        installBtn.addEventListener('click', async () => {
+            if (!deferredPrompt) return;
+
+            deferredPrompt.prompt();
+            await deferredPrompt.userChoice;
+            deferredPrompt = null;
+            installBtn.hidden = true;
+        });
+
+        if (isIOS() && !window.navigator.standalone) {
+            iosHint.hidden = false;
+        }
+
+        });
+</script>
+
+</body>
+</html>
