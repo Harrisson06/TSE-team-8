@@ -243,8 +243,8 @@ MonoBehaviour:
     y: 0
     width: 997.3334
     height: 383.33334
-  m_MinSize: {x: 200, y: 200}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 201, y: 226}
+  m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 13}
   m_Panes:
   - {fileID: 13}
@@ -273,7 +273,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 462
+    y: 407.33334
     width: 1280
     height: 163.99997
   m_SerializedDataModeController:
@@ -317,7 +317,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: e6be0000
     m_LastClickedID: 48870
-    m_ExpandedIDs: 0000000000ca9a3b
+    m_ExpandedIDs: 
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -426,7 +426,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 78.66667
+    y: 24
     width: 281.66666
     height: 357.33334
   m_SerializedDataModeController:
@@ -491,8 +491,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Scene\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 282.6667
-    y: 78.66667
+    x: 283.66666
+    y: 24
     width: 996.3334
     height: 357.33334
   m_SerializedDataModeController:
