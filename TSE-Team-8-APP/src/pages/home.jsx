@@ -1,0 +1,13 @@
+import {useNavigate } from 'react-router-dom'
+
+export default function Home() {
+    const navigate = useNavigate()
+
+    return (
+        <div> 
+            <h1>Welcome</h1>
+            <p>Scan a QR code at a location to start a lesson.</p>
+            <button onClick={() => navigate('/scan')}>Open Scanner</button>
+        </div>
+    )
+}
