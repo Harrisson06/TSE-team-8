@@ -1,7 +1,12 @@
+// LAST EDITED BY: HARRISON MACDONALD 
+// DATE: 25/04/2026
+
 import { useNavigate } from 'react-router-dom'
+import { lazy, Suspense } from 'react'
 import useCamera, {CAMERA_STATUS } from '../hooks/useCamera'
-import QrReader from '../components/QrReader'
-import { request } from 'node:http'
+
+// Lazy loads the QrReader to not error the app
+const QrReader = lazy(() => import('../components/QrReader'))
 
 export default function Scanner() {
     const navigate = useNavigate()
@@ -13,7 +18,7 @@ export default function Scanner() {
     }
 
     // Called by QrReader if the camera fails to start
-    function handleEror(message) {
+    function handleError(message) {
         console.error(message)
     }
 
@@ -42,8 +47,8 @@ export default function Scanner() {
         return (
             <div>
                 <h1>scan a QR code</h1>
-                <p1>Point your camera at a QR code to statr a lesson.</p1>
-                <QrReader onResult={handleResult} onError={handleEror} />
+                <p>Point your camera at a QR code to statr a lesson.</p>
+                <QrReader onResult={handleResult} onError={handleError} />
             </div>
         )
     }
@@ -53,7 +58,7 @@ export default function Scanner() {
         <div>
             <h1>Camera access needed</h1>
             <p>This app needs your camera to scan QR codes at each location.</p>
-            <button onClick={request}>
+            <button onClick={requestCamera}>
                 {status === CAMERA_STATUS.REQUESTING ? 'Requesting...' : 'Allow Camera'}
             </button>
         </div>
