@@ -1,3 +1,6 @@
+// LAST EDITED BY: HARRISON MACDONALD 
+// DATE: 24/04/2026
+
 import { useState, useEffect } from 'react'
 
 // Possible states the camera permissions can be in
