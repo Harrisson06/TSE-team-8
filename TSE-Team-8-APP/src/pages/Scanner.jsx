@@ -1,6 +1,9 @@
 // LAST EDITED BY: HARRISON MACDONALD 
 // DATE: 25/04/2026
 
+// Minor improvement to result handler: Jakub Radziwon
+// Date: 27/04/2026
+
 import { useNavigate } from 'react-router-dom'
 import { lazy, Suspense } from 'react'
 import useCamera, {CAMERA_STATUS } from '../hooks/useCamera'
@@ -13,8 +16,17 @@ export default function Scanner() {
     const { status, requestCamera } = useCamera()
 
     // Called by QrReader when a QR code is successfully decoded
-    function handleResult(locationId) {
-        navigate('/quiz/${locationId')
+    function handleResult(result) {
+        if (hasScanned.current) return;
+
+        const text = result?.text || result;
+        const locationId = text.split('/').filter(Boolean).pop();
+
+        if (!locationId) return; // prevents any undefined navigations
+
+        hasScanned.current = true; // stops any double scans
+
+        navigate(`/quiz/${locationId}`);
     }
 
     // Called by QrReader if the camera fails to start
