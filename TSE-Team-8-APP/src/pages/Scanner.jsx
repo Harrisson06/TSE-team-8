@@ -1,11 +1,9 @@
-// LAST EDITED BY: HARRISON MACDONALD 
-// DATE: 25/04/2026
-
-// Minor improvement to result handler: Jakub Radziwon
-// Date: 27/04/2026
+// LAST EDITED BY JAKUB RADZIWON
+// DATE: 27/04/2026
+// UPDATED SCANNER RESULT HANDLING AND WRAPPED CAMERA ACCESS BETTER
 
 import { useNavigate } from 'react-router-dom'
-import { lazy, Suspense } from 'react'
+import { lazy, Suspense, useRef, useEffect} from 'react'
 import useCamera, {CAMERA_STATUS } from '../hooks/useCamera'
 
 // Lazy loads the QrReader to not error the app
@@ -14,17 +12,30 @@ const QrReader = lazy(() => import('../components/QrReader'))
 export default function Scanner() {
     const navigate = useNavigate()
     const { status, requestCamera } = useCamera()
+    const hasScanned = useRef(false)
+    useEffect(() => {
+        hasScanned.current = false;
+    }, []);
 
+
+    /* prints whatevers scanned (testing only)
+    function handleResult(result) {
+        console.log("SCAN RESULT:", result);
+    }
+    */
+
+   
     // Called by QrReader when a QR code is successfully decoded
     function handleResult(result) {
-        if (hasScanned.current) return;
-
         const text = result?.text || result;
-        const locationId = text.split('/').filter(Boolean).pop();
+        if (!text) return;
 
+        const locationId = text.split('/').filter(Boolean).pop();
         if (!locationId) return; // prevents any undefined navigations
 
-        hasScanned.current = true; // stops any double scans
+        if (hasScanned.current) return; // stops any double scans
+
+        hasScanned.current = true; 
 
         navigate(`/quiz/${locationId}`);
     }
@@ -59,8 +70,10 @@ export default function Scanner() {
         return (
             <div>
                 <h1>scan a QR code</h1>
-                <p>Point your camera at a QR code to statr a lesson.</p>
-                <QrReader onResult={handleResult} onError={handleError} />
+                <p>Point your camera at a QR code to start a lesson.</p>
+                <Suspense fallback={<p>Loading scanner...</p>}>
+                    <QrReader onResult={handleResult} onError={handleError} />
+                </Suspense>
             </div>
         )
     }
