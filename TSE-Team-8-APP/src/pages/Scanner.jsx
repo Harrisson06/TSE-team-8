@@ -17,16 +17,22 @@ export default function Scanner() {
 
     // Called by QrReader when a QR code is successfully decoded
     function handleResult(result) {
-        if (hasScanned.current) return;
-
         const text = result?.text || result;
-        const locationId = text.split('/').filter(Boolean).pop();
+        if (!text) return;
 
+        const locationId = text.split('/').filter(Boolean).pop();
         if (!locationId) return; // prevents any undefined navigations
 
-        hasScanned.current = true; // stops any double scans
+        if (hasScanned.current) return; // stops any double scans
+
+        hasScanned.current = true;
 
         navigate(`/quiz/${locationId}`);
+
+        // reset after navigation so scanner can work next time
+        setTimeout(() => {
+            hasScanned.current = false;
+        }, 1000);
     }
 
     // Called by QrReader if the camera fails to start
