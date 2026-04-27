@@ -22,7 +22,7 @@ export default function App() {
             <Route path="/quiz/:locationId" element={<Quiz />} />
 
             {/* Lesson 3 page */}
-            <Route path="/lesson3/:locationId" element={<Lesson3 />} />
+            <Route path="/lesson3" element={<Lesson3 />} />
 
             {/* Catch-all and redirects to home page */}
             <Route path="*" element={<Navigate to="/" replace /> } />

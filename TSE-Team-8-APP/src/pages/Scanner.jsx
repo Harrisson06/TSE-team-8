@@ -37,7 +37,11 @@ export default function Scanner() {
 
         hasScanned.current = true; 
 
-        navigate(`/quiz/${locationId}`);
+        if (locationId === "lesson3") {
+            navigate("/lesson3");
+        } else {
+            navigate(`/quiz/${locationId}`);
+        }
     }
 
     // Called by QrReader if the camera fails to start
