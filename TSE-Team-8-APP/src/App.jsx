@@ -20,6 +20,9 @@ export default function App() {
             {/* Quiz page */}
             <Route path="/quiz/:locationId" element={<Quiz />} />
 
+            {/* Lesson 3 page */}
+            <Route path="/lesson3" element={<Lesson3 />} />
+
             {/* Catch-all and redirects to home page */}
             <Route path="*" element={<Navigate to="/" replace /> } />
 
