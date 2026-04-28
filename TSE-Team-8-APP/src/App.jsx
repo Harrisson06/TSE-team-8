@@ -6,6 +6,7 @@ import Home from './pages/Home'
 import Scanner from './pages/Scanner'
 import Quiz from './pages/Quiz'
 import Lesson3 from './pages/Lesson3'
+import Lesson4 from './pages/Lesson4'
 
 export default function App() {
     return (
@@ -23,6 +24,9 @@ export default function App() {
 
             {/* Lesson 3 page */}
             <Route path="/lesson3" element={<Lesson3 />} />
+
+            {/* Lesson 4 page */}
+            <Route path="/lesson4" element={<Lesson4 />} />
 
             {/* Catch-all and redirects to home page */}
             <Route path="*" element={<Navigate to="/" replace /> } />

@@ -1,0 +1,52 @@
+body {
+    margin: 0;
+}
+
+.lesson4-page {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width: 100%;
+    overflow: hidden;
+}
+
+.top-half,
+.bottom-half {
+    flex: 1;
+    position: relative;
+    min-height: 0;
+}
+
+.top-half img,
+.bottom-half img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+#funFactBtn, #homeBtn{
+  position: absolute;
+  appearance: none;
+  border-radius: 100px;
+  border-width: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  scale: 2.0;
+}
+
+#funFactBtn{
+  top: 4%;
+  left: 47%;
+  background-color: #3EB2FD;
+  background-image: linear-gradient(1deg, #4F58FD, #149BF3 99%);
+}
+
+#homeBtn{
+  bottom: 4%;
+  left: 47%;
+  background-color: #84fd3e;
+  background-image: linear-gradient(1deg, #95f0ac, #14bff3 99%); 
+}
