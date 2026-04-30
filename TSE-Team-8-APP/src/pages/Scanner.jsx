@@ -5,7 +5,7 @@
 import { useNavigate } from 'react-router-dom'
 import { lazy, Suspense, useRef, useEffect} from 'react'
 import useCamera, {CAMERA_STATUS } from '../hooks/useCamera'
-import PermissionGate from '../components/permissionGate'
+import permissionGate from '../components/permissionGate'
 import ScanOverlay from '../components/scanOverlay'
 import ScanResult from '../components/scanResults'
 
