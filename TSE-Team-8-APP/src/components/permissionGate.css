@@ -1,0 +1,41 @@
+/* PermissionGate styles */
+
+.permission-gate {
+  text-align: center;
+  padding: 40px 20px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.permission-gate__icon {
+  font-size: 48px;
+  margin-bottom: 16px;
+}
+
+.permission-gate__title {
+  font-size: 24px;
+  margin-bottom: 12px;
+}
+
+.permission-gate__text {
+  font-size: 16px;
+  color: #aaa;
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.permission-gate__button {
+  padding: 12px 24px;
+  font-size: 16px;
+  background: #00ff88;
+  color: #0f0f0f;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.permission-gate__button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
