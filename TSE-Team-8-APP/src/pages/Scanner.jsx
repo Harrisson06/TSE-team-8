@@ -3,9 +3,9 @@
 // UPDATED SCANNER RESULT HANDLING AND WRAPPED CAMERA ACCESS BETTER
 
 import { useNavigate } from 'react-router-dom'
-import { lazy, Suspense, useRef, useEffect} from 'react'
+import { lazy, Suspense, useRef, useEffect, useState} from 'react'
 import useCamera, {CAMERA_STATUS } from '../hooks/useCamera'
-import permissionGate from '../components/permissionGate'
+import PermissionGate from '../components/PermissionGate'
 import ScanOverlay from '../components/scanOverlay'
 import ScanResult from '../components/scanResults'
 

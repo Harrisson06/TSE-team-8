@@ -1,0 +1,75 @@
+/* ScanOverlay styles */
+
+.scan-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.scan-overlay__frame {
+    position: relative;
+    width: 60%;
+    aspect-ratio: 1 / 1;
+    max-width: 300px;
+}
+
+.scan-overlay__corner {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+}
+
+.scan-overlay__corner--top-left {
+    top: 0;
+    left: 0;
+    border-top: 3px solid #00ff88;
+    border-left: 3px solid #00ff88;
+}
+
+.scan-overlay__corner--top-right {
+    top: 0;
+    right: 0;
+    border-top: 3px solid #00ff88;
+    border-right: 3px solid #00ff88;
+}
+
+.scan-overlay__corner--bottom-left {
+    bottom: 0;
+    left: 0;
+    border-bottom: 3px solid #00ff88;
+    border-left: 3px solid #00ff88;
+}
+
+.scan-overlay__corner--bottom-right {
+    bottom: 0;
+    right: 0;
+    border-bottom: 3px solid #00ff88;
+    border-right: 3px solid #00ff88;
+}
+
+.scan-overlay__line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00ff88, transparent);
+    animation: scanLine 2s ease-in-out infinite;
+}
+
+@keyframes scanLine {
+    0%   { top: 0%; }
+    50%  { top: 100%; }
+    100% { top: 0%; }
+}
+
+@media (max-width: 600px) {
+    .scan-overlay__frame {
+        width: 70%;
+    }
+}
