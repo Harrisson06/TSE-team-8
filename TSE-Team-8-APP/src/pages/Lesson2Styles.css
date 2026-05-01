@@ -1,0 +1,71 @@
+/* LAST EDITED BY: LEWIS GORMLEY */
+/* DATE: 30/04/2026 */
+
+.lesson2-page {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh;
+
+    background-image: url("../assets/Lesson2Img.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#lesson2cameraBtn, #lesson2cafeBtn, #lesson2phoneBtn{
+    position: absolute;
+    background-image: radial-gradient(100% 100% at 100% 0, #27e9ff 0, #5468ff 100%);
+    box-shadow: 0px 4px 6px rgb(0, 4, 113);
+    border: none;
+    overflow: hidden;
+    cursor: pointer;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    padding: 0;
+    z-index: 5;
+}
+
+#lesson2cameraBtn {
+    top: 43%;
+    left: 37%;
+}
+
+#lesson2cafeBtn {
+    top: 70%;
+    left: 53%;
+}
+
+#lesson2phoneBtn {
+    top: 75%;
+    left: 75%;
+}
+
+#lesson2funFactBtn, #lesson2homeBtn{
+  position: absolute;
+  appearance: none;
+  border-radius: 100px;
+  border-width: 0;
+  box-shadow: none;
+  box-sizing: border-box;
+  color: #FFFFFF;
+  cursor: pointer;
+  scale: 2.0;
+}
+
+#lesson2funFactBtn{
+  top: 4%;
+  left: 47%;
+  background-color: #3EB2FD;
+  background-image: linear-gradient(1deg, #4F58FD, #149BF3 99%);
+}
+
+#lesson2homeBtn{
+  bottom: 4%;
+  left: 47%;
+  background-color: #84fd3e;
+  background-image: linear-gradient(1deg, #95f0ac, #14bff3 99%); 
+}
