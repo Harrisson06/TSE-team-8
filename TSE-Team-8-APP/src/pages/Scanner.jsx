@@ -1,6 +1,5 @@
 // LAST EDITED BY JAKUB RADZIWON
-// DATE: 27/04/2026
-// UPDATED SCANNER RESULT HANDLING AND WRAPPED CAMERA ACCESS BETTER
+// DATE: 03/05/2026
 
 import { useNavigate } from 'react-router-dom'
 import { lazy, Suspense, useRef, useEffect, useState} from 'react'
@@ -42,15 +41,28 @@ export default function Scanner() {
         
         setScanResult({ status: 'success', message: `Loading lesson: ${locationId}`})
 
-        setTimeout(() => {
-            if (locationId === "lesson3") {
-            navigate("/lesson3");
-        } else {
-            navigate(`/quiz/${locationId}`);
-            }
-        }, 1000);
-    }
+        const lessonRoutes = {
+            lesson1: "/lesson1",
+            lesson2: "/lesson2",
+            lesson3: "/lesson3",
+            lesson4: "/lesson4  "
+        };
 
+        const route = lessonRoutes [locationId];
+
+        setTimeout(() => {
+            if (route) {
+                navigate(route);
+            } else {
+                setScanResult({
+                    status: 'error',
+                    message: `No lesson found for ${locationId}`
+                });
+
+                hasScanned.current = false;
+        }
+    }, 1000);
+}
     // Called by QrReader if the camera fails to start
     function handleError(message) {
         console.error(message)
